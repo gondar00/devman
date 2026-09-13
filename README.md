@@ -8,14 +8,25 @@
 
 ---
 
-## What it does
+## Why LGTM — not Claude Code or Codex?
 
-Developers lose hours every day context-switching between Linear, GitHub, and Slack to figure out what to work on next — then more hours doing the actual work.
+Tools like Claude Code and Codex are **reactive** — you bring the task, they execute it. LGTM is **proactive**: it surfaces what needs doing across your entire stack before you even ask.
+
+The other key difference is **model freedom**. Claude Code locks you into one model. LGTM shows you the task, presents your model options (Haiku, Sonnet, Opus, DeepSeek R1) with a real cost estimate upfront, and lets you choose the right tool for the job — a 5-line fix doesn't need Opus.
+
+**The vision:** in a future version, LGTM runs on a schedule, autonomously executes your entire backlog overnight, and presents a review queue in the morning — a diff of everything it shipped for you to approve. Coding tools go from reactive to proactive. You stop managing tasks and start reviewing outcomes.
+
+---
+
+## What it does today
+
+Developers lose hours every day context-switching between Linear, GitHub, and Slack to figure out what to work on — then more hours doing it.
 
 LGTM is an AI tech lead that:
-1. **Briefs you** — pulls your assigned Linear issues + open GitHub PRs into a ranked P0–P3 priority list
-2. **Executes** — you click Exe on any task, pick a model, and the agent plans, writes code, opens a PR, updates Linear, and posts to Slack
-3. **Tracks impact** — every execution logs hours saved and cost saved to a live dashboard
+1. **Briefs you** — pulls assigned Linear issues + open GitHub PRs into a ranked P0–P3 priority list
+2. **Lets you choose** — pick the model and see the cost before committing a single token
+3. **Executes** — plans, writes code, opens a PR, updates Linear, posts to Slack
+4. **Tracks impact** — every execution logs hours saved and cost saved to a live dashboard
 
 ---
 
