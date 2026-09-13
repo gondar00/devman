@@ -3,6 +3,7 @@
 > The AI that briefs you on what needs shipping, then ships it.
 
 **Live demo:** https://devbrief-two.vercel.app
+**Demo video:** https://www.loom.com/share/3b8a04650b114291afeac2bc705c7cd5
 
 ---
 
