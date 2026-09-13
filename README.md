@@ -1,4 +1,4 @@
-# LGTM — AI Tech Lead
+# devman
 
 > The AI that briefs you on what needs shipping, then ships it.
 
@@ -8,13 +8,13 @@
 
 ---
 
-## Why LGTM — not Claude Code or Codex?
+## Why devman — not Claude Code or Codex?
 
-Tools like Claude Code and Codex are **reactive** — you bring the task, they execute it. LGTM is **proactive**: it surfaces what needs doing across your entire stack before you even ask.
+Tools like Claude Code and Codex are **reactive** — you bring the task, they execute it. devman is **proactive**: it surfaces what needs doing across your entire stack before you even ask.
 
-The other key difference is **model freedom**. Claude Code locks you into one model. LGTM shows you the task, presents your model options (Haiku, Sonnet, Opus, DeepSeek R1) with a real cost estimate upfront, and lets you choose the right tool for the job — a 5-line fix doesn't need Opus.
+The other key difference is **model freedom**. Claude Code locks you into one model. devman shows you the task, presents your model options (Haiku, Sonnet, Opus, DeepSeek R1) with a real cost estimate upfront, and lets you choose the right tool for the job — a 5-line fix doesn't need Opus.
 
-**The vision:** in a future version, LGTM runs on a schedule, autonomously executes your entire backlog overnight, and presents a review queue in the morning — a diff of everything it shipped for you to approve. Coding tools go from reactive to proactive. You stop managing tasks and start reviewing outcomes.
+**The vision:** in a future version, devman runs on a schedule, autonomously executes your entire backlog overnight, and presents a review queue in the morning — a diff of everything it shipped for you to approve. Coding tools go from reactive to proactive. You stop managing tasks and start reviewing outcomes.
 
 ---
 
@@ -22,7 +22,7 @@ The other key difference is **model freedom**. Claude Code locks you into one mo
 
 Developers lose hours every day context-switching between Linear, GitHub, and Slack to figure out what to work on — then more hours doing it.
 
-LGTM is an AI tech lead that:
+devman is an AI tech lead that:
 1. **Briefs you** — pulls assigned Linear issues + open GitHub PRs into a ranked P0–P3 priority list
 2. **Lets you choose** — pick the model and see the cost before committing a single token
 3. **Executes** — plans, writes code, opens a PR, updates Linear, posts to Slack
