@@ -24,8 +24,8 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --font-sans: "Geist", "Geist Fallback", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Geist Mono", "Geist Mono Fallback", ui-monospace, monospace;
+  --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Roboto Mono", ui-monospace, monospace;
 }
 
 :root {
@@ -49,6 +49,29 @@
   --input: oklch(0.16 0 0);
   --ring: oklch(0.72 0.15 185);
   --radius: 0.5rem;
+}
+
+/* Light mode override */
+html.light {
+  color-scheme: light;
+  --background: oklch(0.98 0 0);
+  --foreground: oklch(0.12 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.12 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.12 0 0);
+  --primary: oklch(0.55 0.15 185);
+  --primary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.94 0 0);
+  --secondary-foreground: oklch(0.12 0 0);
+  --muted: oklch(0.94 0 0);
+  --muted-foreground: oklch(0.45 0 0);
+  --accent: oklch(0.55 0.15 185);
+  --accent-foreground: oklch(0.98 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.88 0 0);
+  --input: oklch(0.92 0 0);
+  --ring: oklch(0.55 0.15 185);
 }
 
 * {

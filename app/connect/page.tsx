@@ -71,9 +71,8 @@ export default function ConnectPage() {
     <div className="min-h-screen bg-[#080808] flex flex-col">
       {/* Header */}
       <header className="border-b border-[#1a1a1a] px-8 py-4 flex items-center gap-3">
-        <span className="text-teal-400 font-mono font-bold text-lg">DB</span>
-        <span className="text-white font-semibold">DevBrief</span>
-        <span className="ml-2 text-xs text-zinc-500 font-mono">AI Chief of Staff</span>
+        <a href="/" className="text-teal-400 font-mono font-bold text-lg tracking-tight">LGTM</a>
+        <span className="ml-2 text-xs text-zinc-500 font-mono">AI Tech Lead</span>
       </header>
 
       <main className="flex-1 flex flex-col items-center justify-center px-4 py-16">
@@ -82,7 +81,7 @@ export default function ConnectPage() {
           <div className="mb-10">
             <h1 className="text-2xl font-semibold text-white mb-2">Connect your tools</h1>
             <p className="text-zinc-400 text-sm">
-              DevBrief pulls from your dev stack to surface what actually needs attention.
+              LGTM pulls from your dev stack, surfaces what needs attention, and ships it.
             </p>
           </div>
 
@@ -143,7 +142,7 @@ export default function ConnectPage() {
               disabled={connected === 0 || saved}
               className="px-5 py-2 bg-teal-500 hover:bg-teal-400 disabled:opacity-40 disabled:cursor-not-allowed text-black font-semibold text-sm rounded-md transition-colors"
             >
-              {saved ? "Saved — opening chat…" : "Save & open DevBrief"}
+              {saved ? "Saved — opening chat…" : "Save & open LGTM"}
             </button>
           </div>
 

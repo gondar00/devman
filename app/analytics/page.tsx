@@ -13,20 +13,21 @@ const DEV_HOURLY_RATE = 150; // $USD
 
 function useExecutions() {
   const [execs, setExecs] = useState<Execution[]>([]);
+
   useEffect(() => {
-    fetch("/api/log-execution")
-      .then((r) => r.json())
-      .then((data: Execution[]) => {
-        if (Array.isArray(data) && data.length > 0) { setExecs(data); return; }
-        // fallback to localStorage
-        const raw = localStorage.getItem("db_executions");
-        if (raw) setExecs(JSON.parse(raw));
-      })
-      .catch(() => {
-        const raw = localStorage.getItem("db_executions");
-        if (raw) setExecs(JSON.parse(raw));
-      });
+    const uid = localStorage.getItem("lgtm_uid") ?? "anonymous";
+
+    const load = () =>
+      fetch(`/api/log-execution?uid=${uid}`)
+        .then((r) => r.json())
+        .then((data: Execution[]) => { if (Array.isArray(data)) setExecs(data); })
+        .catch(() => {});
+
+    void load();
+    const id = setInterval(load, 5000);
+    return () => clearInterval(id);
   }, []);
+
   return execs;
 }
 
@@ -61,8 +62,7 @@ export default function AnalyticsPage() {
   return (
     <div className="min-h-screen bg-[#080808] flex flex-col">
       <header className="border-b border-[#1a1a1a] px-8 py-4 flex items-center gap-3">
-        <Link href="/" className="text-teal-400 font-mono font-bold text-lg">DB</Link>
-        <span className="text-white font-semibold">DevBrief</span>
+        <Link href="/" className="text-teal-400 font-mono font-bold text-lg tracking-tight">LGTM</Link>
         <span className="text-zinc-600 text-sm">/</span>
         <span className="text-zinc-400 text-sm">Analytics</span>
         <span className="flex-1" />
@@ -72,7 +72,7 @@ export default function AnalyticsPage() {
       <main className="flex-1 px-8 py-10 max-w-5xl mx-auto w-full">
         <div className="mb-8">
           <h1 className="text-2xl font-semibold text-white mb-1">Impact dashboard</h1>
-          <p className="text-zinc-500 text-sm">Tasks dev man has shipped for you.</p>
+          <p className="text-zinc-500 text-sm">Tasks dev man has shipped for you — looks good, then merges it.</p>
         </div>
 
         {/* KPI row */}

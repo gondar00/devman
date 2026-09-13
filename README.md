@@ -80,12 +80,26 @@ Tokens are stored in your browser and sent securely as request headers — nothi
 
 ---
 
-## Reliability
+## Reliability & evaluation
 
-- Each tool call returns structured errors instead of crashing — the agent surfaces "GitHub token not set, visit /connect" rather than a 500
-- Linear, GitHub, and Slack calls run in parallel during briefing (no sequential bottlenecks)
-- Analytics writes to Redis are best-effort (failure doesn't break execution)
-- Tested end-to-end: debrief → model selection → branch creation → file push → PR open → Linear update → Slack post → analytics update
+4 evals under `evals/` cover the critical paths:
+
+| Eval | What it checks |
+|------|---------------|
+| `smoke` | Agent boots and responds coherently |
+| `briefing` | `get_github_work` + `show_tasks` are both called on a debrief request |
+| `execute-flow` | Execute command asks for context/model before touching any GitHub tools |
+| `error-handling` | Missing token produces a `/connect` message, not a crash |
+
+```bash
+npm run dev:eve &   # start agent
+npx eve eval        # run all 4 evals
+```
+
+Additional reliability design:
+- Each tool call returns structured `{ error }` instead of throwing — the agent surfaces "visit /connect" rather than a 500
+- Linear + GitHub calls run in parallel during briefing (no sequential bottlenecks)
+- Analytics writes to Redis are best-effort (failure never blocks execution)
 
 ---
 

@@ -7,12 +7,12 @@ function credentialsAuth(): AuthFn<Request> {
     const githubToken = request.headers.get("x-github-token") ?? "";
     const slackToken = request.headers.get("x-slack-token") ?? "";
     if (!linearToken && !githubToken && !slackToken) return null;
-    const principalId = `creds-${linearToken.slice(-6)}-${githubToken.slice(-6)}`;
+    const userId = request.headers.get("x-user-id") ?? `anon-${linearToken.slice(-6)}`;
     return {
       authenticator: "credentials",
-      principalId,
+      principalId: userId,
       principalType: "user" as const,
-      attributes: { linearToken, githubToken, slackToken },
+      attributes: { linearToken, githubToken, slackToken, userId },
     };
   };
 }

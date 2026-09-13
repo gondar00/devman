@@ -3,7 +3,16 @@
 import type { UserContent } from "ai";
 import { useEveAgent } from "eve/react";
 import { AlertCircleIcon, BrainIcon, PlusIcon, SquareIcon } from "lucide-react";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+
+function getUserId(): string {
+  let uid = localStorage.getItem("lgtm_uid");
+  if (!uid) {
+    uid = crypto.randomUUID();
+    localStorage.setItem("lgtm_uid", uid);
+  }
+  return uid;
+}
 
 function getCredHeaders(): Record<string, string> {
   if (typeof window === "undefined") return {};
@@ -14,6 +23,7 @@ function getCredHeaders(): Record<string, string> {
   if (linear) h["x-linear-token"] = linear;
   if (github) h["x-github-token"] = github;
   if (slack) h["x-slack-token"] = slack;
+  h["x-user-id"] = getUserId();
   return h;
 }
 import {
