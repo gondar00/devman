@@ -1,15 +1,27 @@
 import { eveChannel } from "eve/channels/eve";
-import { localDev, placeholderAuth, vercelOidc } from "eve/channels/auth";
+import { localDev, none, vercelOidc, type AuthFn } from "eve/channels/auth";
+
+function credentialsAuth(): AuthFn<Request> {
+  return (request) => {
+    const linearToken = request.headers.get("x-linear-token") ?? "";
+    const githubToken = request.headers.get("x-github-token") ?? "";
+    const slackToken = request.headers.get("x-slack-token") ?? "";
+    if (!linearToken && !githubToken && !slackToken) return null;
+    const principalId = `creds-${linearToken.slice(-6)}-${githubToken.slice(-6)}`;
+    return {
+      authenticator: "credentials",
+      principalId,
+      principalType: "user" as const,
+      attributes: { linearToken, githubToken, slackToken },
+    };
+  };
+}
 
 export default eveChannel({
   auth: [
-    // Lets the eve TUI and your Vercel deployments reach the deployed agent.
     vercelOidc(),
-    // Open on localhost for `eve dev` and the REPL; ignored in production.
     localDev(),
-    // This placeholder will not allow browser requests in production.
-    // Replace it with your app's auth provider, like Auth.js or Clerk,
-    // or use none() for a public demo.
-    placeholderAuth(),
+    credentialsAuth(),
+    none(),
   ],
 });
